@@ -1,5 +1,9 @@
 name: Deploy
-on: [push]
+on:
+ push:
+    branches:
+      - main
+      - 'releases/**'
 
 jobs:
   deploy:
@@ -19,4 +23,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "full-sheep-92"
+          import-map: "./import_map.json"
           entrypoint: "./main.ts" # TODO: update entrypoint
